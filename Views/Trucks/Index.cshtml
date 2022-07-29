@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TruckAssistant.Models.Truck>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Available Trucks</h1>
+
+<button type="button" class="btn btn-success mt-4 mb-2">
+    <a class="text-light text-uppercase font-weight-bold text-decoration-none" asp-action="Create">Add truck</a>
+</button>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vmax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverBreaksLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverBreaksInterval)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vmax) km/h
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverBreaksLength) min
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverBreaksInterval) h
+            </td>
+            <td>
+
+                <button class="btn btn-dark">
+                    <a class="text-light text-decoration-none" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </button> 
+                
+                <button class="btn btn-dark">
+                    <a class="text-light text-decoration-none" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </button>
+                
+                <button class="btn btn-dark">
+                    <a class="text-light text-decoration-none" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </button>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>    
+
